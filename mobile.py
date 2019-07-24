@@ -1,3 +1,4 @@
+import secrets
 from time import sleep
 from twilio.rest import Client
 import requests
@@ -15,18 +16,18 @@ headers = {
     'Postman-Token': ""
     }
 pattern = re.compile('<td class=\"EnrolledSize\">([0-9]*?)/([0-9]*?)</td>');
-account_sid = ''
-auth_token = ''
-client = Client(account_sid, auth_token)
+client = Client(secrets.account_sid, secrets.auth_token)
 
 while True: 
 	response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
 	match = pattern.search(response.text)
 
+	print(match.group(1) + '/' + match.group(2))
+
 	if (match.group(1) != match.group(2)):
 		break
 
-	sleep(600)
+	sleep(300)
 
 message = client.messages.create(
     body="Hey go enroll in Mobile! http://uaconnect.uark.edu/",
