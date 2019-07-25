@@ -26,7 +26,7 @@ while True:
 	print(match.group(1) + '/' + match.group(2), end='\t')
 	print(datetime.now(timezone('US/Eastern')).strftime("(%B %d %I:%M:%S%p)"))
 
-	if (match.group(1) == match.group(2)):
+	if (match.group(1) != match.group(2)):
 		break
 
 	sleep(1800)
