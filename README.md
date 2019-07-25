@@ -10,4 +10,5 @@ Usage (local):
 	- Run the python script
 
 Usage (Docker):
+
 	- Build and run the image (already contains python and required packages!)
